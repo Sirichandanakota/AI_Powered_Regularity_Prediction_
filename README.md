@@ -1,1 +1,1 @@
-# AI_Powered_Regularity_Prediction_
+# SecureQuotient
