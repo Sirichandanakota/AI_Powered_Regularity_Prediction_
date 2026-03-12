@@ -1212,7 +1212,13 @@
                     consumers. <span class="font-semibold">Built with explainability, auditable AI, and policy
                         traceability.</span></p>
 </div>
-<button class="landing-button" id="proceedToLoginButton">Proceed to Login <i class="fas fa-arrow-right ml-2"></i></button>
+<button class="login-button" id="loginButton">
+<i class="fas fa-sign-in-alt mr-2"></i>Login
+</button>
+
+<button class="login-button mt-3 bg-green-600 hover:bg-green-700" onclick="tryDemo()">
+<i class="fas fa-play-circle mr-2"></i>Try Demo
+</button>
 </div>
 </div>
 <!-- Login Screen -->
@@ -4484,6 +4490,19 @@ function closeModal(modalId) {
     if (modal) {
         modal.style.display = 'none';
     }
+}
+function tryDemo(){
+
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("appContainer").classList.remove("hidden");
+
+document.getElementById("userName").innerText = "Demo User";
+document.getElementById("employeeId").innerText = "DEMO001";
+document.getElementById("userRole").innerText = "Compliance Analyst";
+document.getElementById("userDept").innerText = "Regulatory AI";
+
+document.getElementById("loggedInUserName").innerText = "Demo User";
+
 }
 </script>
 </body>
