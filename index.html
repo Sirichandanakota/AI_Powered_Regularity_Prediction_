@@ -4504,17 +4504,19 @@ document.getElementById("loggedInUserName").innerText = "Demo User";
 }
 </script>
         <script>
-function tryDemo() {
+function tryDemo(){
 
 document.getElementById("landingScreen").classList.add("hidden");
-document.getElementById("loginScreen").classList.add("hidden");
 document.getElementById("appContainer").classList.remove("hidden");
 
-document.getElementById("loggedInUserName").innerText = "Demo User";
-document.getElementById("userName").innerText = "Demo User";
-document.getElementById("employeeId").innerText = "DEMO001";
-document.getElementById("userRole").innerText = "Compliance Analyst";
-document.getElementById("userDept").innerText = "AI Compliance";
+document.getElementById("loggedInUserName").innerText="Demo User";
+document.getElementById("userName").innerText="Demo User";
+document.getElementById("employeeId").innerText="DEMO001";
+document.getElementById("userRole").innerText="Compliance Analyst";
+document.getElementById("userDept").innerText="AI Compliance";
+
+loadDashboardCharts();
+loadAlerts();
 
 }
 
@@ -4575,6 +4577,89 @@ maintainAspectRatio:false
 }
 
 }
-        
+        <script>
+
+// Initialize charts when dashboard opens
+function loadDashboardCharts(){
+
+const complianceCtx = document.getElementById("complianceChart");
+
+if(complianceCtx){
+new Chart(complianceCtx,{
+type:"line",
+data:{
+labels:["Jan","Feb","Mar","Apr","May","Jun"],
+datasets:[{
+label:"Compliance %",
+data:[82,85,88,90,91,92],
+borderColor:"#2563eb",
+backgroundColor:"rgba(37,99,235,0.2)",
+fill:true,
+tension:0.4
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+const riskCtx=document.getElementById("riskTimelineChart");
+
+if(riskCtx){
+new Chart(riskCtx,{
+type:"bar",
+data:{
+labels:["Week1","Week2","Week3","Week4"],
+datasets:[{
+label:"Risk Score",
+data:[40,55,70,60],
+backgroundColor:["#22c55e","#f59e0b","#ef4444","#3b82f6"]
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+}
+
+</script>
+        function loadAlerts(){
+
+const alertsContainer=document.getElementById("alerts");
+
+alertsContainer.innerHTML=`
+
+<div class="alert-item">
+<div class="alert-content">
+<i class="fas fa-exclamation-circle"></i>
+FDI policy update detected impacting marketplace sellers.
+</div>
+<button class="button-small button-action">Review</button>
+</div>
+
+<div class="alert-item">
+<div class="alert-content">
+<i class="fas fa-exclamation-triangle"></i>
+Data localization compliance risk detected.
+</div>
+<button class="button-small button-action">Investigate</button>
+</div>
+
+<div class="alert-item">
+<div class="alert-content">
+<i class="fas fa-balance-scale"></i>
+Competition Commission regulation change predicted.
+</div>
+<button class="button-small button-action">Assess Impact</button>
+</div>
+
+`;
+
+}
 </body>
 </html>
