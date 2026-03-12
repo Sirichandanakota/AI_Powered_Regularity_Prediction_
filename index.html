@@ -4515,8 +4515,7 @@ document.getElementById("employeeId").innerText="DEMO001";
 document.getElementById("userRole").innerText="Compliance Analyst";
 document.getElementById("userDept").innerText="AI Compliance";
 
-loadDashboardCharts();
-loadAlerts();
+initializeCharts();   // ADD THIS LINE
 
 }
 
@@ -4532,51 +4531,6 @@ document.getElementById("landingScreen").classList.remove("hidden");
 }
 
 </script>
-        window.onload = function(){
-
-const ctx = document.getElementById('complianceChart');
-
-if(ctx){
-new Chart(ctx,{
-type:'line',
-data:{
-labels:["Jan","Feb","Mar","Apr","May"],
-datasets:[{
-label:"Compliance %",
-data:[82,85,88,90,92],
-borderColor:"#2563eb",
-backgroundColor:"rgba(37,99,235,0.2)",
-fill:true
-}]
-},
-options:{
-responsive:true,
-maintainAspectRatio:false
-}
-});
-}
-
-const ctx2 = document.getElementById('riskTimelineChart');
-
-if(ctx2){
-new Chart(ctx2,{
-type:'bar',
-data:{
-labels:["Week1","Week2","Week3","Week4"],
-datasets:[{
-label:"Risk Score",
-data:[30,45,60,40],
-backgroundColor:["#22c55e","#f59e0b","#ef4444","#3b82f6"]
-}]
-},
-options:{
-responsive:true,
-maintainAspectRatio:false
-}
-});
-}
-
-}
         <script>
 
 // Initialize charts when dashboard opens
@@ -4661,5 +4615,55 @@ Competition Commission regulation change predicted.
 `;
 
 }
+        <script>
+
+function initializeCharts(){
+
+const ctx = document.getElementById('complianceChart');
+
+if(ctx){
+new Chart(ctx,{
+type:'line',
+data:{
+labels:["Jan","Feb","Mar","Apr","May"],
+datasets:[{
+label:"Compliance %",
+data:[82,85,88,90,92],
+borderColor:"#2563eb",
+backgroundColor:"rgba(37,99,235,0.2)",
+fill:true,
+tension:0.4
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+const ctx2 = document.getElementById('riskTimelineChart');
+
+if(ctx2){
+new Chart(ctx2,{
+type:'bar',
+data:{
+labels:["Week1","Week2","Week3","Week4"],
+datasets:[{
+label:"Risk Score",
+data:[30,45,60,40],
+backgroundColor:["#22c55e","#f59e0b","#ef4444","#3b82f6"]
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+}
+
+</script>
 </body>
 </html>
