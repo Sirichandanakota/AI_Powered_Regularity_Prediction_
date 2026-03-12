@@ -1220,7 +1220,7 @@
 </div>
 </div>
 <!-- Login Screen -->
-<div class="login-screen hidden" id="loginScreen">
+<div class="login-screen hidden" id="loginScreen" style="display:none;">
 <div class="login-card">
 <div class="flex justify-center items-center mb-6">
 <!-- 'W' SVG icon for login page -->
@@ -4506,20 +4506,75 @@ document.getElementById("loggedInUserName").innerText = "Demo User";
         <script>
 function tryDemo() {
 
-    // hide landing screen
-    document.getElementById("landingScreen").classList.add("hidden");
+document.getElementById("landingScreen").classList.add("hidden");
+document.getElementById("loginScreen").classList.add("hidden");
+document.getElementById("appContainer").classList.remove("hidden");
 
-    // show dashboard
-    document.getElementById("appContainer").classList.remove("hidden");
-
-    // set demo user data
-    document.getElementById("loggedInUserName").innerText = "Demo User";
-    document.getElementById("userName").innerText = "Demo User";
-    document.getElementById("employeeId").innerText = "DEMO001";
-    document.getElementById("userRole").innerText = "Compliance Analyst";
-    document.getElementById("userDept").innerText = "AI Compliance";
+document.getElementById("loggedInUserName").innerText = "Demo User";
+document.getElementById("userName").innerText = "Demo User";
+document.getElementById("employeeId").innerText = "DEMO001";
+document.getElementById("userRole").innerText = "Compliance Analyst";
+document.getElementById("userDept").innerText = "AI Compliance";
 
 }
+
+                
 </script>
+        <script>
+
+function simulateLogout(){
+
+document.getElementById("appContainer").classList.add("hidden");
+document.getElementById("landingScreen").classList.remove("hidden");
+
+}
+
+</script>
+        window.onload = function(){
+
+const ctx = document.getElementById('complianceChart');
+
+if(ctx){
+new Chart(ctx,{
+type:'line',
+data:{
+labels:["Jan","Feb","Mar","Apr","May"],
+datasets:[{
+label:"Compliance %",
+data:[82,85,88,90,92],
+borderColor:"#2563eb",
+backgroundColor:"rgba(37,99,235,0.2)",
+fill:true
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+const ctx2 = document.getElementById('riskTimelineChart');
+
+if(ctx2){
+new Chart(ctx2,{
+type:'bar',
+data:{
+labels:["Week1","Week2","Week3","Week4"],
+datasets:[{
+label:"Risk Score",
+data:[30,45,60,40],
+backgroundColor:["#22c55e","#f59e0b","#ef4444","#3b82f6"]
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false
+}
+});
+}
+
+}
+        
 </body>
 </html>
